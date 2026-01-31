@@ -1,0 +1,245 @@
+tarqon-intelligence/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── capabilities/page.tsx
+│   ├── industries/page.tsx
+│   ├── founding-program/page.tsx
+│   ├── contact/page.tsx
+├── components/
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── CapabilityCard.tsx
+│   ├── CTA.tsx
+├── styles/
+│   └── globals.css
+├── tailwind.config.ts
+├── postcss.config.js
+├── next.config.js
+├── package.json
+└── tsconfig.json
+import "@/styles/globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export const metadata = {
+  title: "TARQON INTELLIGENCE",
+  description: "Institutional AI for Modern Due Diligence",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="dark">
+      <body className="bg-neutral-950 text-neutral-200 antialiased">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
+import CapabilityCard from "@/components/CapabilityCard";
+import CTA from "@/components/CTA";
+
+export default function Home() {
+  return (
+    <>
+      {/* HERO */}
+      <section className="py-32">
+        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-16 px-6">
+          <div className="col-span-7">
+            <p className="text-xs uppercase tracking-[0.2em] text-emerald-400">
+              Confidential Enterprise Platform
+            </p>
+
+            <h1 className="mt-8 text-6xl font-semibold leading-tight">
+              Institutional Intelligence
+              <br />
+              for Modern Due Diligence
+            </h1>
+
+            <p className="mt-8 max-w-xl text-lg text-neutral-400">
+              Financial, legal, and risk analysis engineered for venture
+              capital, private equity, and M&A teams.
+            </p>
+
+            <div className="mt-12 flex gap-6">
+              <a
+                href="/contact"
+                className="rounded bg-emerald-500 px-8 py-4 text-sm font-medium uppercase tracking-widest text-black"
+              >
+                Request Private Demo
+              </a>
+              <a
+                href="/founding-program"
+                className="rounded border border-neutral-700 px-8 py-4 text-sm uppercase tracking-widest"
+              >
+                Founding Program
+              </a>
+            </div>
+          </div>
+
+          <div className="col-span-5 border-l border-neutral-800 pl-12">
+            <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-10">
+              <p className="text-xs uppercase tracking-widest text-neutral-500">
+                System Preview
+              </p>
+              <div className="mt-8 h-56 rounded bg-neutral-800" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CAPABILITIES */}
+      <section className="border-t border-neutral-900 py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
+            Core Capabilities
+          </p>
+
+          <div className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <CapabilityCard
+              title="Financial Intelligence"
+              description="Structured extraction and institutional-grade financial signal analysis across statements and historical trends."
+            />
+            <CapabilityCard
+              title="Unit Economics Validation"
+              description="Strategic evaluation of acquisition efficiency, lifetime value metrics, and scalability validation."
+            />
+            <CapabilityCard
+              title="Legal & Contract Analysis"
+              description="AI-assisted review of legal documents with risk-based clause detection and compliance intelligence."
+            />
+            <CapabilityCard
+              title="Risk Detection & Monitoring"
+              description="Continuous identification of financial instability and operational exposure."
+            />
+            <CapabilityCard
+              title="Competitive Benchmarking"
+              description="Peer analysis and industry KPI benchmarking for strategic positioning."
+            />
+          </div>
+        </div>
+      </section>
+
+      <CTA
+        headline="Apply for Early Access"
+        subtext="Limited enrollment for founding institutional partners."
+        button="Request Access"
+      />
+    </>
+  );
+}
+import Link from "next/link";
+
+export default function Navbar() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/90 backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+        <Link
+          href="/"
+          className="text-sm font-semibold tracking-[0.2em]"
+        >
+          TARQON INTELLIGENCE
+        </Link>
+
+        <nav className="hidden items-center gap-10 text-xs uppercase tracking-widest md:flex">
+          <Link href="/capabilities">Capabilities</Link>
+          <Link href="/industries">Industries</Link>
+          <Link href="/founding-program">Founding Program</Link>
+          <Link
+            href="/contact"
+            className="rounded bg-emerald-500 px-5 py-2 text-black"
+          >
+            Request Access
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+}
+export default function CapabilityCard({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="group relative rounded-xl border border-neutral-800 bg-neutral-900/40 p-10 transition hover:border-neutral-600">
+      <div className="absolute left-0 top-0 h-full w-[2px] bg-emerald-500 opacity-0 transition group-hover:opacity-100" />
+      <p className="text-xs uppercase tracking-widest text-neutral-500">
+        Intelligence Module
+      </p>
+      <h3 className="mt-6 text-2xl font-medium">{title}</h3>
+      <p className="mt-6 text-sm leading-relaxed text-neutral-400">
+        {description}
+      </p>
+      <p className="mt-8 text-xs uppercase tracking-widest text-emerald-400">
+        Available in Office-Level Suite
+      </p>
+    </div>
+  );
+}
+export default function CTA({
+  headline,
+  subtext,
+  button,
+}: {
+  headline: string;
+  subtext: string;
+  button: string;
+}) {
+  return (
+    <section className="border-t border-neutral-800 py-32 text-center">
+      <h2 className="text-4xl font-semibold">{headline}</h2>
+      <p className="mt-6 text-neutral-400">{subtext}</p>
+      <a
+        href="/contact"
+        className="mt-10 inline-block rounded bg-emerald-500 px-8 py-4 text-sm font-medium uppercase tracking-widest text-black"
+      >
+        {button}
+      </a>
+    </section>
+  );
+}
+export default function Footer() {
+  return (
+    <footer className="border-t border-neutral-800 py-16">
+      <div className="mx-auto max-w-7xl px-6 text-xs uppercase tracking-widest text-neutral-500">
+        © {new Date().getFullYear()} TARQON INTELLIGENCE • Confidential
+        Enterprise Deployment
+      </div>
+    </footer>
+  );
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  darkMode: "class",
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+export default config;
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+module.exports = nextConfig;
