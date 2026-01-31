@@ -1,245 +1,359 @@
-tarqon-intelligence/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── capabilities/page.tsx
-│   ├── industries/page.tsx
-│   ├── founding-program/page.tsx
-│   ├── contact/page.tsx
-├── components/
-│   ├── Navbar.tsx
-│   ├── Footer.tsx
-│   ├── CapabilityCard.tsx
-│   ├── CTA.tsx
-├── styles/
-│   └── globals.css
-├── tailwind.config.ts
-├── postcss.config.js
-├── next.config.js
-├── package.json
-└── tsconfig.json
-import "@/styles/globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
-export const metadata = {
-  title: "TARQON INTELLIGENCE",
-  description: "Institutional AI for Modern Due Diligence",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className="dark">
-      <body className="bg-neutral-950 text-neutral-200 antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
-}
-import CapabilityCard from "@/components/CapabilityCard";
-import CTA from "@/components/CTA";
-
-export default function Home() {
-  return (
-    <>
-      {/* HERO */}
-      <section className="py-32">
-        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-16 px-6">
-          <div className="col-span-7">
-            <p className="text-xs uppercase tracking-[0.2em] text-emerald-400">
-              Confidential Enterprise Platform
-            </p>
-
-            <h1 className="mt-8 text-6xl font-semibold leading-tight">
-              Institutional Intelligence
-              <br />
-              for Modern Due Diligence
-            </h1>
-
-            <p className="mt-8 max-w-xl text-lg text-neutral-400">
-              Financial, legal, and risk analysis engineered for venture
-              capital, private equity, and M&A teams.
-            </p>
-
-            <div className="mt-12 flex gap-6">
-              <a
-                href="/contact"
-                className="rounded bg-emerald-500 px-8 py-4 text-sm font-medium uppercase tracking-widest text-black"
-              >
-                Request Private Demo
-              </a>
-              <a
-                href="/founding-program"
-                className="rounded border border-neutral-700 px-8 py-4 text-sm uppercase tracking-widest"
-              >
-                Founding Program
-              </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratyush Srivastava - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.55;
+            color: #2c2c2c;
+            background: #f9f9f9;
+            padding: 30px 20px;
+        }
+        
+        .cv-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px 55px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            border-radius: 2px;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .header {
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #0f0f0f;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.93em;
+            color: #555;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .contact-info a:hover {
+            color: #004fa3;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f0f0f;
+            text-transform: uppercase;
+            letter-spacing: 2.2px;
+            margin-top: 24px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
+            display: inline-block;
+        }
+        
+        /* Content Areas */
+        .section {
+            margin-bottom: 22px;
+        }
+        
+        .subsection {
+            margin-bottom: 18px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.99em;
+            font-weight: 700;
+            color: #0f0f0f;
+        }
+        
+        .job-date {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .job-meta {
+            font-size: 0.92em;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .job-meta strong {
+            color: #0f0f0f;
+        }
+        
+        /* Lists */
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            font-size: 0.92em;
+            margin-bottom: 10px;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.65;
+            color: #333;
+        }
+        
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        /* Education & Certifications */
+        .edu-item {
+            margin-bottom: 16px;
+        }
+        
+        .edu-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98em;
+            font-weight: 700;
+            color: #0f0f0f;
+            margin-bottom: 3px;
+        }
+        
+        .edu-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .edu-details {
+            font-size: 0.91em;
+            color: #555;
+        }
+        
+        /* Technical Skills */
+        .skills-category {
+            margin-bottom: 12px;
+            font-size: 0.92em;
+            line-height: 1.6;
+        }
+        
+        .skills-category strong {
+            color: #0f0f0f;
+            font-weight: 600;
+        }
+        
+        .skills-category span {
+            color: #444;
+        }
+        
+        /* Spacing utilities */
+        .gap-top {
+            margin-top: 4px;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .cv-container {
+                max-width: 100%;
+                box-shadow: none;
+                margin: 0;
+                padding: 40px 50px;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cv-container {
+                padding: 35px 30px;
+            }
+            
+            .name {
+                font-size: 26px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="name">PRATYUSH SRIVASTAVA</div>
+            <div class="contact-info">
+                <span><a href="mailto:srivastavapratyush.ps@gmail.com">srivastavapratyush.ps@gmail.com</a></span>
+                <span>+91-7269089380</span>
+                <span>New Delhi, India</span>
             </div>
-          </div>
-
-          <div className="col-span-5 border-l border-neutral-800 pl-12">
-            <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-10">
-              <p className="text-xs uppercase tracking-widest text-neutral-500">
-                System Preview
-              </p>
-              <div className="mt-8 h-56 rounded bg-neutral-800" />
+        </div>
+        
+        <!-- Education -->
+        <div class="section-title">EDUCATION</div>
+        <div class="section">
+            <div class="edu-item">
+                <div class="edu-title">Integrated Program in Management (IPM), Bachelor of Business Administration</div>
+                <div class="edu-meta"><strong>Specialization:</strong> Forensic Accounting</div>
+                <div class="edu-meta">National Forensic Sciences University, New Delhi | Expected Graduation: 2027 (BBA) | MBA: 2029</div>
+                <div class="edu-details"><strong>CGPA:</strong> 7.85/10</div>
+                <div class="edu-details gap-top"><strong>Relevant Coursework:</strong> Financial Markets & Institutions, Corporate Finance, Investment Analysis, Financial Modeling, Valuation, Forensic Accounting, Research Methodology</div>
             </div>
-          </div>
         </div>
-      </section>
-
-      {/* CAPABILITIES */}
-      <section className="border-t border-neutral-900 py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-            Core Capabilities
-          </p>
-
-          <div className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-            <CapabilityCard
-              title="Financial Intelligence"
-              description="Structured extraction and institutional-grade financial signal analysis across statements and historical trends."
-            />
-            <CapabilityCard
-              title="Unit Economics Validation"
-              description="Strategic evaluation of acquisition efficiency, lifetime value metrics, and scalability validation."
-            />
-            <CapabilityCard
-              title="Legal & Contract Analysis"
-              description="AI-assisted review of legal documents with risk-based clause detection and compliance intelligence."
-            />
-            <CapabilityCard
-              title="Risk Detection & Monitoring"
-              description="Continuous identification of financial instability and operational exposure."
-            />
-            <CapabilityCard
-              title="Competitive Benchmarking"
-              description="Peer analysis and industry KPI benchmarking for strategic positioning."
-            />
-          </div>
+        
+        <!-- Certifications -->
+        <div class="section-title">CERTIFICATIONS & QUALIFICATIONS</div>
+        <div class="section">
+            <div class="edu-item">
+                <div class="edu-title">CFA Level 1 Candidate</div>
+                <div class="edu-meta">CFA Institute | Expected Exam Date: May 2026</div>
+            </div>
         </div>
-      </section>
-
-      <CTA
-        headline="Apply for Early Access"
-        subtext="Limited enrollment for founding institutional partners."
-        button="Request Access"
-      />
-    </>
-  );
-}
-import Link from "next/link";
-
-export default function Navbar() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="text-sm font-semibold tracking-[0.2em]"
-        >
-          TARQON INTELLIGENCE
-        </Link>
-
-        <nav className="hidden items-center gap-10 text-xs uppercase tracking-widest md:flex">
-          <Link href="/capabilities">Capabilities</Link>
-          <Link href="/industries">Industries</Link>
-          <Link href="/founding-program">Founding Program</Link>
-          <Link
-            href="/contact"
-            className="rounded bg-emerald-500 px-5 py-2 text-black"
-          >
-            Request Access
-          </Link>
-        </nav>
-      </div>
-    </header>
-  );
-}
-export default function CapabilityCard({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="group relative rounded-xl border border-neutral-800 bg-neutral-900/40 p-10 transition hover:border-neutral-600">
-      <div className="absolute left-0 top-0 h-full w-[2px] bg-emerald-500 opacity-0 transition group-hover:opacity-100" />
-      <p className="text-xs uppercase tracking-widest text-neutral-500">
-        Intelligence Module
-      </p>
-      <h3 className="mt-6 text-2xl font-medium">{title}</h3>
-      <p className="mt-6 text-sm leading-relaxed text-neutral-400">
-        {description}
-      </p>
-      <p className="mt-8 text-xs uppercase tracking-widest text-emerald-400">
-        Available in Office-Level Suite
-      </p>
+        
+        <!-- Professional Experience -->
+        <div class="section-title">PROFESSIONAL EXPERIENCE</div>
+        <div class="section">
+            <div class="subsection">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">SJV & Associates</div>
+                        <div class="job-meta">Due Diligence & Risk Assessment</div>
+                    </div>
+                    <div class="job-date">May 2025 – July 2025 | Lucknow, India</div>
+                </div>
+                <ul>
+                    <li><strong>Financial Modeling & Analysis:</strong> Constructed comprehensive CMA (Credit Monitoring Arrangement) reports for corporate loan applications, projecting working capital requirements and assessing financial viability for bank approval across diverse client portfolios.</li>
+                    <li><strong>Audit & Risk Assessment:</strong> Conducted concurrent audit procedures across MSME loan portfolios for Union Bank, coordinating a 2-person team and verifying compliance and creditworthiness for 10+ accounts totaling ₹50 crore in aggregate loan exposure; identified compliance gaps and risk factors affecting credit decision-making.</li>
+                    <li><strong>Tax Compliance & Optimization:</strong> Managed end-to-end filing of GSTR-1 and GSTR-3B for 15+ diverse clients, achieving 100% filing accuracy and statutory deadline adherence while optimizing Input Tax Credit (ITC) claims by 15%.</li>
+                    <li><strong>Corporate Structuring:</strong> Facilitated incorporation of 2 private limited entities with minimum statutory valuations, overseeing MCA documentation and Digital Signature Certificate (DSC) generation for 12+ directors; supported post-incorporation compliance and statutory filings.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Entrepreneurial Initiatives -->
+        <div class="section-title">ENTREPRENEURIAL INITIATIVES</div>
+        <div class="section">
+            <div class="subsection">
+                <div class="job-title">Meridian Intelligence – Founder & Developer (Ongoing)</div>
+                <ul>
+                    <li><strong>AI-Powered Due Diligence Engine:</strong> Conceptualized and developed proprietary platform automating analysis of unstructured corporate data (financial statements, legal documents) to generate forensic-level performance reports for institutional investors, enabling rapid risk assessment and deal screening.</li>
+                    <li><strong>Post-Deal Analytics Solution:</strong> Targeting post-deal analytics gaps in PE add-on acquisition workflows, enabling enhanced integration planning, operational due diligence, and risk control mechanisms critical to value creation.</li>
+                    <li><strong>Investor-Startup Matching Algorithm:</strong> Engineered proprietary compatibility algorithm that matches startups with investors based on sector focus, development stage, and vision alignment, addressing deal-sourcing inefficiencies endemic to emerging ecosystems.</li>
+                    <li><strong>Investment Screening Automation:</strong> Optimized investment screening workflow to project 80-90% reduction in analyst hours by automating extraction of KPIs, compliance flags, financial health metrics, and capital structure indicators.</li>
+                    <li><strong>Retrospective Analysis Module:</strong> Designed pre-fundraising audit module providing startups with internal assessments to identify market threats, operational inefficiencies, and remedial capital structure improvements.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Projects & Case Studies -->
+        <div class="section-title">PROJECTS & CASE STUDIES</div>
+        <div class="section">
+            <div class="subsection">
+                <div class="job-title">Stock Market Analysis – Hands-On Experience Program</div>
+                <div class="job-meta">Finlatics</div>
+                <ul>
+                    <li>Conducted real-time equity research and identified stocks with measurable upside potential using fundamental and technical analysis.</li>
+                    <li>Managed simulated stock portfolio valued at ₹2 lakh, generating 22% returns over 3-month period through disciplined stock selection and portfolio rebalancing.</li>
+                    <li>Synthesized market news, macroeconomic factors, and technical indicators to inform trading decisions and risk management strategies.</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <div class="job-title">Investment Thesis – Café Coffee Day (CCD) Market Entry Strategy</div>
+                <div class="job-meta">Bazaar Breakout Case Competition | 2nd Runner Up (NSUT Delhi)</div>
+                <ul>
+                    <li>Analyzed "Bean-to-Cup" market pivot strategy during 1991 Economic Liberalization, evaluating regulatory inflection points including License Raj dismantling and Coffee Board deregulation using macroeconomic modeling and capital structure optimization frameworks.</li>
+                    <li>Developed brand localization strategy detailing CCD's positioning between traditional Indian consumption habits and Western café culture, establishing "Third Place" positioning for emerging urban demographic segments.</li>
+                    <li>Incorporated macroeconomic context (tariff structures, competitive dynamics, consumer behavior shifts) into strategic recommendations for market penetration and profitability scaling.</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <div class="job-title">Climate Finance & Sovereign Debt Framework</div>
+                <div class="job-meta">IIM Lucknow Model United Nations | High Commendation, 2nd Place (120+ delegates)</div>
+                <ul>
+                    <li>Outperformed 120+ delegates by developing comprehensive strategic framework addressing $2-2.8 trillion annual investment gap for global energy transitions by 2030 through institutional innovation and capital mobilization mechanisms.</li>
+                    <li>Formulated debt-for-climate swap mechanisms utilizing Just Energy Transition Partnerships (JETP) to mitigate sovereign credit rating risks for Vulnerable Twenty (V20) economies while preserving fiscal sustainability.</li>
+                    <li>Synthesized macroeconomic data on sovereign debt sustainability, credit rating dynamics, and emerging market capital flows to propose institutional solutions for mobilizing private capital in climate-critical sectors.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Technical Skills -->
+        <div class="section-title">TECHNICAL SKILLS</div>
+        <div class="section">
+            <div class="skills-category"><strong>Financial Modeling & Analysis:</strong> <span>3-Statement Financial Models, Valuation Concepts (DCF, LBO, etc.), Comparable Company Analysis, Precedent Transactions, Equity Research, Credit Analysis</span></div>
+            <div class="skills-category"><strong>Technical Tools:</strong> <span>Microsoft Excel (Advanced), PowerPoint, Bloomberg Terminal (CFA Candidate), AI/ML Tools, PitchBook</span></div>
+            <div class="skills-category"><strong>Accounting & Finance Expertise:</strong> <span>Financial Statement Analysis, IFRS/GAAP, Financial Reporting, Private Equity, Forensic Accounting, Audit Procedures</span></div>
+        </div>
+        
+        <!-- Additional Information -->
+        <div class="section-title">ADDITIONAL INFORMATION</div>
+        <div class="section">
+            <div class="skills-category"><strong>Languages:</strong> <span>English (Fluent), Hindi (Native), French (Beginner)</span></div>
+            <div class="skills-category"><strong>Interests:</strong> <span>Behavioral Finance, Global Macroeconomics, Diplomacy and Foreign Policy</span></div>
+        </div>
     </div>
-  );
-}
-export default function CTA({
-  headline,
-  subtext,
-  button,
-}: {
-  headline: string;
-  subtext: string;
-  button: string;
-}) {
-  return (
-    <section className="border-t border-neutral-800 py-32 text-center">
-      <h2 className="text-4xl font-semibold">{headline}</h2>
-      <p className="mt-6 text-neutral-400">{subtext}</p>
-      <a
-        href="/contact"
-        className="mt-10 inline-block rounded bg-emerald-500 px-8 py-4 text-sm font-medium uppercase tracking-widest text-black"
-      >
-        {button}
-      </a>
-    </section>
-  );
-}
-export default function Footer() {
-  return (
-    <footer className="border-t border-neutral-800 py-16">
-      <div className="mx-auto max-w-7xl px-6 text-xs uppercase tracking-widest text-neutral-500">
-        © {new Date().getFullYear()} TARQON INTELLIGENCE • Confidential
-        Enterprise Deployment
-      </div>
-    </footer>
-  );
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
-  scroll-behavior: smooth;
-}
-import type { Config } from "tailwindcss";
-
-const config: Config = {
-  darkMode: "class",
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-
-export default config;
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = nextConfig;
+</body>
+</html>
